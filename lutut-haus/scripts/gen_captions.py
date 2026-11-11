@@ -1,20 +1,6 @@
 import json
-W=[ # (text, start, end)
- [("JOGGING",0.15,0.6),("DALAM",0.6,0.85),("RUMAH?",0.85,1.3)],
- [("BOLEH!",1.65,2.4)],
- [("OK,",22.9,23.4)],
- [("SEKARANG",24.35,24.75),("DAH",24.75,24.95),("OKAY",24.95,25.3),("KAN?",25.3,25.7)],
- [("INSYAALLAH",25.95,26.4)],
- [("OH,",26.55,26.85),("BETUL.",26.85,27.4)],
- [("BOLEH",27.75,28.0),("MAIN",28.45,28.7),("BADMINTON",28.7,29.15)],
- [("BALIK",29.15,29.3),("TAK?",29.3,29.55)],
- [("INSYAALLAH",29.7,30.8)],
- [("ALHAMDULILLAH",31.05,32.1)],
- [("JOM,",32.3,32.55),("JOM!",32.7,32.95)],
- [("KITA",33.25,33.5),("JALAN-JALAN",33.5,34.1),("DULU,",34.1,34.35)],
- [("MINGGU",34.4,34.7),("DEPAN",34.7,35.0)],
- [("KITA",35.0,35.2),("JOGGING!",35.2,35.75)],
-]
+import json as _j
+W=[[tuple(x) for x in g] for g in _j.load(open('/home/user/work/captions_words.json'))]
 groups=[]
 for gi,g in enumerate(W):
     s=round(g[0][1]-0.08,2)

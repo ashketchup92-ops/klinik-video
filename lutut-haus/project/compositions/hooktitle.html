@@ -6,7 +6,7 @@
 #ht-title{font-family:Montserrat,sans-serif;font-weight:900;font-size:140px;line-height:1;color:#FFD400;-webkit-text-stroke:14px #000;paint-order:stroke fill;text-shadow:0 10px 30px rgba(0,0,0,.6);margin-top:22px;}
 </style>
 <div id="root" data-composition-id="hooktitle" data-width="1080" data-height="1920">
-  <div id="ht-wrap" class="clip" data-start="0" data-duration="2.8" data-track-index="0">
+  <div id="ht-wrap" class="clip" data-start="0" data-duration="3.3" data-track-index="0">
     <div id="ht-kicker" data-var-text="kicker">SAKIT NAK JALAN?</div>
     <div id="ht-title" data-var-text="title">LUTUT HAUS?</div>
   </div>
@@ -15,8 +15,8 @@
 const tl = gsap.timeline({ paused: true });
 tl.fromTo("#ht-kicker",{y:-40,opacity:0},{y:0,opacity:1,duration:0.3,ease:"power3.out"},0.05);
 tl.fromTo("#ht-title",{scale:1.6,opacity:0},{scale:1,opacity:1,duration:0.35,ease:"back.out(1.8)"},0.15);
-tl.to("#ht-title",{scale:1.05,duration:1.2,ease:"sine.inOut"},0.6);
-tl.to(["#ht-kicker","#ht-title"],{opacity:0,y:-30,duration:0.2,ease:"power2.in"},2.55);
+tl.to("#ht-title",{scale:1.05,duration:1.6,ease:"sine.inOut"},0.6);
+tl.to(["#ht-kicker","#ht-title"],{opacity:0,y:-30,duration:0.2,ease:"power2.in"},3.05);
 window.__timelines["hooktitle"] = tl;
 </script>
 </template>
