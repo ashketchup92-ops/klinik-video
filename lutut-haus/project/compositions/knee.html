@@ -1,0 +1,61 @@
+<template>
+<style>
+#root{position:absolute;inset:0;}
+#kn-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,#3a1428 0%,#170a11 70%);}
+#kn-head{position:absolute;left:60px;top:230px;width:960px;text-align:center;font-family:Montserrat,sans-serif;}
+.kn-t{position:absolute;left:0;top:0;width:960px;}
+.kn-t .a{font-weight:900;font-size:76px;line-height:1.05;color:#fff;}
+.kn-t .a b{color:#FFD400;}
+.kn-t .b{font-weight:600;font-size:40px;color:#f3d7e4;margin-top:18px;line-height:1.25;}
+#kn-svg{position:absolute;left:190px;top:560px;width:700px;height:740px;}
+#kn-tag{position:absolute;left:0;top:1310px;width:1080px;text-align:center;font-family:Montserrat,sans-serif;font-weight:700;font-size:30px;color:#c9a3b5;letter-spacing:.05em;}
+</style>
+<div id="root" data-composition-id="knee" data-width="1080" data-height="1920">
+  <div id="kn-bg" class="clip" data-start="0" data-duration="5.5" data-track-index="0"></div>
+  <div id="kn-head" class="clip" data-start="0" data-duration="5.5" data-track-index="1" data-layout-allow-overlap>
+    <div class="kn-t" id="kn-t1"><div class="a">LUTUT HAUS =<br><b>RAWAN SENDI MENIPIS</b></div><div class="b">Tulang bergeser, jadi sakit &amp; kejang</div></div>
+    <div class="kn-t" id="kn-t2"><div class="a">GEL HYALURONIC =<br><b>"PELINCIR" SENDI</b></div><div class="b">Bantu kurangkan geseran<br>&amp; lapik hentakan</div></div>
+  </div>
+  <svg id="kn-svg" class="clip" data-start="0" data-duration="5.5" data-track-index="2" viewBox="0 0 700 740">
+    <defs>
+      <linearGradient id="bone" x1="0" x2="1"><stop offset="0" stop-color="#e9dcc6"/><stop offset="1" stop-color="#cdb999"/></linearGradient>
+      <radialGradient id="gelg"><stop offset="0" stop-color="#7fe3ff" stop-opacity=".95"/><stop offset="1" stop-color="#2aa7e0" stop-opacity=".55"/></radialGradient>
+    </defs>
+    <!-- femur -->
+    <path d="M250 0 L450 0 L460 230 C520 250 560 300 545 345 C530 385 470 380 430 360 C400 375 300 375 270 360 C230 380 170 385 155 345 C140 300 180 250 240 230 Z" fill="url(#bone)"/>
+    <!-- tibia -->
+    <path d="M160 440 C200 420 300 425 350 430 C400 425 500 420 540 440 C560 470 520 500 470 510 L455 740 L245 740 L230 510 C180 500 140 470 160 440 Z" fill="url(#bone)"/>
+    <!-- cartilage top/bottom (healthy -> thin) -->
+    <path id="kn-cartT" d="M165 345 C200 378 260 372 290 356 C320 368 380 368 410 356 C440 372 500 378 535 345 L535 345 C500 395 440 392 410 378 C380 390 320 390 290 378 C260 392 200 395 165 345 Z" fill="#a6d8f0"/>
+    <path id="kn-cartB" d="M165 440 C210 420 300 425 350 432 C400 425 490 420 535 440 C495 418 400 412 350 418 C300 412 205 418 165 440 Z" fill="#a6d8f0"/>
+    <!-- gel -->
+    <ellipse id="kn-gel" cx="350" cy="402" rx="200" ry="34" fill="url(#gelg)"/>
+    <!-- pain marks -->
+    <g id="kn-pain" stroke="#ff4d4d" stroke-width="8" stroke-linecap="round" fill="none">
+      <path d="M300 395 l-30 -20 M300 395 l-36 0 M300 395 l-30 20"/>
+      <path d="M400 395 l30 -20 M400 395 l36 0 M400 395 l30 20"/>
+    </g>
+    <text x="350" y="150" text-anchor="middle" fill="#6b4a33" font-family="Montserrat" font-weight="800" font-size="30">Tulang paha</text>
+    <text x="350" y="640" text-anchor="middle" fill="#6b4a33" font-family="Montserrat" font-weight="800" font-size="30">Tulang kering</text>
+  </svg>
+  <div id="kn-tag" class="clip" data-start="0" data-duration="5.5" data-track-index="3">ILUSTRASI · BUKAN SKALA SEBENAR</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo("#kn-svg",{opacity:0,y:40},{opacity:1,y:0,duration:0.4,ease:"power3.out"},0);
+tl.fromTo("#kn-t1",{opacity:0,y:30},{opacity:1,y:0,duration:0.35,ease:"power3.out"},0.1);
+tl.fromTo("#kn-gel",{opacity:0,scaleX:0.2,transformOrigin:"50% 50%"},{opacity:0,scaleX:0.2,duration:0.01},0);
+tl.fromTo("#kn-pain",{opacity:0},{opacity:0,duration:0.01},0);
+// cartilage thins + bones press
+tl.fromTo(["#kn-cartT","#kn-cartB"],{opacity:1,fill:"#a6d8f0"},{opacity:0.25,fill:"#b9a27f",duration:0.9,ease:"power2.inOut"},0.6);
+tl.to("#kn-pain",{opacity:1,duration:0.15},1.4);
+tl.to("#kn-pain",{opacity:0.35,duration:0.25,yoyo:true,repeat:3},1.55);
+tl.to("#kn-t1",{opacity:0,y:-20,duration:0.25,ease:"power2.in"},2.55);
+tl.to("#kn-pain",{opacity:0,duration:0.3},2.75);
+tl.fromTo("#kn-t2",{opacity:0,y:30},{opacity:1,y:0,duration:0.35,ease:"power3.out"},2.8);
+tl.to("#kn-gel",{opacity:1,scaleX:1,duration:0.8,ease:"power3.out"},3.0);
+tl.to("#kn-gel",{scaleY:1.15,duration:0.6,ease:"sine.inOut",yoyo:true,repeat:1},3.8);
+tl.to(["#kn-svg","#kn-t2","#kn-tag"],{opacity:0,duration:0.2,ease:"power2.in"},5.25);
+window.__timelines["knee"] = tl;
+</script>
+</template>

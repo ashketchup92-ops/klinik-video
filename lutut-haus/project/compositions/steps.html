@@ -1,0 +1,30 @@
+<template>
+<style>
+#root{position:absolute;inset:0;}
+.st{position:absolute;left:0;top:1060px;width:1080px;text-align:center;}
+.st .card{display:inline-flex;align-items:center;gap:22px;background:rgba(20,8,14,.82);border:3px solid #FFD400;border-radius:26px;padding:22px 34px;max-width:900px;text-align:left;}
+.st .n{flex:none;width:76px;height:76px;border-radius:50%;background:#FFD400;color:#1a0f14;font-family:Montserrat,sans-serif;font-weight:900;font-size:46px;display:flex;align-items:center;justify-content:center;}
+.st .t{font-family:Montserrat,sans-serif;font-weight:800;font-size:50px;line-height:1.1;color:#fff;}
+#st-top{position:absolute;left:0;top:250px;width:1080px;text-align:center;}
+#st-top span{display:inline-block;font-family:Montserrat,sans-serif;font-weight:900;font-size:44px;color:#fff;background:#9B1D5A;padding:12px 28px;border-radius:14px;letter-spacing:.03em;}
+</style>
+<div id="root" data-composition-id="steps" data-width="1080" data-height="1920">
+  <div id="st-top" class="clip" data-start="0" data-duration="14.5" data-track-index="0"><span id="st-topt">SUNTIKAN GEL LUTUT</span></div>
+  <div id="st1" class="st clip" data-start="0" data-duration="2.5" data-track-index="1"><div class="card" id="st1c"><div class="n">1</div><div class="t">Peralatan steril disediakan</div></div></div>
+  <div id="st2" class="st clip" data-start="2.5" data-duration="2" data-track-index="1"><div class="card" id="st2c"><div class="n">2</div><div class="t">Kulit lutut dibersihkan</div></div></div>
+  <div id="st3" class="st clip" data-start="4.5" data-duration="4" data-track-index="1"><div class="card" id="st3c"><div class="n">3</div><div class="t">Gel disuntik ke dalam sendi lutut</div></div></div>
+  <div id="st4" class="st clip" data-start="8.5" data-duration="3" data-track-index="1"><div class="card" id="st4c"><div class="n">4</div><div class="t">Lutut digerakkan supaya gel tersebar</div></div></div>
+  <div id="st5" class="st clip" data-start="11.5" data-duration="3" data-track-index="1"><div class="card" id="st5c"><div class="n">5</div><div class="t">Tampal plaster. Siap!</div></div></div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo("#st-topt",{y:-30,opacity:0},{y:0,opacity:1,duration:0.3,ease:"power3.out"},0.05);
+tl.to("#st-topt",{opacity:0,duration:0.2},14.25);
+const S=[[1,0,2.5],[2,2.5,2],[3,4.5,4],[4,8.5,3],[5,11.5,3]];
+S.forEach(([i,s,d])=>{
+  tl.fromTo("#st"+i+"c",{x:-80,opacity:0},{x:0,opacity:1,duration:0.3,ease:"power3.out"},s+0.05);
+  tl.to("#st"+i+"c",{x:60,opacity:0,duration:0.18,ease:"power2.in"},s+d-0.2);
+});
+window.__timelines["steps"] = tl;
+</script>
+</template>
